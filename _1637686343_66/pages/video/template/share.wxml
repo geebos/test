@@ -1,0 +1,56 @@
+<template name="album-social-single-box">
+    <view class="album-operate-btn">
+        <view bindtap="scrollToComments" class="album-operate-item album-detail-comments">
+            <image class="c-icon-comments" src="/resource/images/c-icon-comments.png"></image>
+            <view class="album-operate-item-text">{{totalComments?totalComments:'评论'}}</view>
+        </view>
+        <view bindtap="agreeSingle" class="album-operate-item album-detail-collect" data-is-agree="{{agreeSingleVideo.isAgreeSingle}}" data-qipu-id="{{qipuId}}">
+            <image class="c-icon-collect-agree" src="{{agreeSingleVideo.isAgreeSingle?'/resource/images/vote-single-after.png':'/resource/images/vote-single-before.png'}}"></image>
+            <view class="album-operate-item-text {{agreeSingleVideo.isAgreeSingle?'info-green-red':''}}">{{agreeSingleVideo.isAgreeSingle?'已点赞':'点赞'}}</view>
+        </view>
+        <view bindtap="showShare" class="m-video_function-share album-operate-item album-detail-share">
+            <image class="c-icon-share-new" src="{{showShare?'/resource/images/share-animation-video.gif':'/resource/images/c-icon-share-new.png'}}"></image>
+            <view class="album-operate-item-text">{{shareCountCN?shareCountCN:'分享'}}</view>
+            <form bindsubmit="shareInVideo" data-aid="{{albumId?albumId:qipuId}}" data-rseat="wx_share" data-share-count="{{shareCount}}" data-sub-type="{{subType}}" reportSubmit="true">
+                <button class="m-video_btnshare" formType="submit" openType="share" plain="true" size="mini" style="border:none;" wx:if="{{ifCanIUse.shareBtn}}"></button>
+            </form>
+        </view>
+    </view>
+</template>
+<template name="album-social-box">
+    <view class="album-operate-btn">
+        <view bindtap="scrollToComments" class="album-operate-item album-detail-comments">
+            <image class="c-icon-comments" src="/resource/images/c-icon-comments.png"></image>
+            <view class="album-operate-item-text">{{totalComments?totalComments:'评论'}}</view>
+        </view>
+        <view class="album-operate-item album-detail-collect">
+            <image class="c-icon-collect-new" data-collect="{{isCollect}}" src="{{isCollect?'/resource/images/c-icon-album-collected.png':'/resource/images/c-icon-collect-new.png'}} "></image>
+            <view class="album-operate-item-text {{isCollect?'info-green-text':''}}">{{isCollect?'已收藏':'收藏'}}</view>
+            <form bindsubmit="collectVideo" data-album-id="{{albumId}}" data-channel-id="{{channelId}}" data-is-collect="{{isCollect}}" data-sub-type="{{subType}}" data-tvid="{{qipuId}}" reportSubmit="true">
+                <button class="m-video_collect" formType="submit" plain="true" size="mini" style="border: none;"></button>
+            </form>
+        </view>
+        <view bindtap="showShare" class="m-video_function-share album-operate-item album-detail-share">
+            <image class="c-icon-share-new" src="{{showShare?'/resource/images/share-animation-video.gif':'/resource/images/c-icon-share-new.png'}}"></image>
+            <view class="album-operate-item-text">{{shareCountCN?shareCountCN:'分享'}}</view>
+            <form bindsubmit="shareInVideo" data-aid="{{albumId?albumId:qipuId}}" data-rseat="wx_share" data-share-count="{{shareCount}}" data-sub-type="{{subType}}" reportSubmit="true">
+                <button class="m-video_btnshare" formType="submit" openType="share" plain="true" size="mini" style="border:none;" wx:if="{{ifCanIUse.shareBtn}}"></button>
+            </form>
+        </view>
+    </view>
+</template>
+<template name="share">
+    <view class="m-more" wx:if="{{share}}">
+        <navigator openType="navigateBack" url="/pages/home/home">
+            <view class="m-more_content">
+                <view>
+                    <image class="m-more_logo" src="/resource/images/logo.png"></image>
+                </view>
+                <view>
+                    <text class="m-more_text">更多精彩视频</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" style="opacity:0.9;" width="15"></image>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</template>

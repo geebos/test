@@ -1,0 +1,25 @@
+<template name="m-short-handle">
+    <form bindsubmit="goToPlayVideo" class="m-short-handle-wrapper" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-rank="{{index}}" data-tvid="{{video.tvId}}" reportSubmit="true">
+        <button class="m-short-handle button-in-form" formType="submit">
+            <view class="m-short-handle_item user-content">
+                <block wx:if="{{video&&video.wallType==6}}">
+                    <image catchtap="handleToUserVideo" class="c-icon-iqiyi-user short-handle-playnum" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-name="{{video.name}}" data-rank="{{index}}" data-tvid="{{video.tvId}}" data-uid="{{video.uid}}" src="{{video.icon}}" wx:if="{{video.icon}}"></image>
+                    <image catchtap="handleToUserVideo" class="m-iqiyi-user-tag" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-name="{{video.name}}" data-rank="{{index}}" data-tvid="{{video.tvId}}" data-uid="{{video.uid}}" src="/resource/images/c-icon-iqiyi-user.png" wx:if="{{video.icon}}"></image>
+                    <text catchtap="handleToUserVideo" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-name="{{video.name}}" data-rank="{{index}}" data-tvid="{{video.tvId}}" data-uid="{{video.uid}}">{{video.name}}</text>
+                </block>
+            </view>
+            <view catchtap="agreeOrCancel" class="m-short-handle_item" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-owner="{{video.uid}}" data-rank="{{index}}" data-sourcetype="{{video.sourceType}}" data-tvid="{{video.tvId}}" data-wallid="{{video.wallId}}">
+                <image class="c-icon-love" hidden="{{video.isAgree}}" src="/resource/images/c-short-like-before.png"></image>
+                <image class="c-icon-love-after" hidden="{{!video.isAgree}}" src="/resource/images/c-short-like-after.png"></image>
+                <text class="m-short-text" wx:if="{{video.agreeCount!='0'&&video.agreeCount}}">{{video.agreeCountCN}}</text>
+            </view>
+            <view catchtap="shareVideo" class="m-short-handle_item" data-cid="{{video.channelId}}" data-image-url="{{video.imageUrl}}" data-shared-count="{{video.sharedCount}}" data-title="{{video.shortTitle}}" data-tvid="{{video.tvId}}">
+                <image class="c-icon-share short-handle-share" src="{{video.showShare?'/resource/images/share-animation-hot.gif':'/resource/images/c-icon-short-share.png'}}"></image>
+                <text class="m-short-text m-short-share-text" wx:if="{{video.sharedCountCN}}">{{video.sharedCountCN}}</text>
+                <form bindsubmit="shareVideoFormId" reportSubmit="true">
+                    <button class="m-video_btnshare" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{video.feedId}}" data-image-url="{{video.imageUrl}}" data-rank="{{index}}" data-tvid="{{video.tvId}}" formType="submit" openType="share" plain="true" size="mini" style="border:none;position: absolute;right:10rpx;height: 40rpx;" wx:if="{{isSurportBtnShare}}"></button>
+                </form>
+            </view>
+        </button>
+    </form>
+</template>

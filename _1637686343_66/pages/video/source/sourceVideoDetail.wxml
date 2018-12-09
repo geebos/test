@@ -1,0 +1,24 @@
+<template name="sourceVideoDetail">
+    <view class="m-film">
+        <view class="m-film_title">
+            <view class="album-title" wx:if="{{isFeatureFilm}}">
+                <text bindtap="goAlbumInfo" class="album-name">{{videoTitleObj.albumName}}</text>：{{videoTitleObj.shortTitle}}</view>
+            <text wx:else>{{videoTitleObj.shortTitle}}</text>
+            <image animation="{{filmAnimation}}" bindtap="switchDesc" class="c-icon-bottom" src="/resource/images/c-icon-bottom.png" wx:if="{{hosts||guests||desc}}"></image>
+        </view>
+        <block wx:if="{{filterStatus&&filterStatus==6}}">
+            <view class="m-film_update" wx:if="{{videoHotNum}}">热度：{{videoHotNum}}</view>
+        </block>
+        <view class="m-film_details" wx:if="{{showDesc&&(hosts||guests||desc)}}">
+            <view wx:if="{{hosts}}">
+                <text>主持：{{hosts}}</text>
+            </view>
+            <view wx:if="{{guests}}">
+                <text>嘉宾：{{guests}}</text>
+            </view>
+            <view class="m-film_intro" wx:if="{{desc}}">
+                <text>本集简介：{{desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>

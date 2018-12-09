@@ -1,0 +1,194 @@
+.m-floatLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgb(30,30,30) url(http://www.iqiyipic.com/common/fix/wx-iqiyi/player-tip-bg.jpg);
+    background-size: cover;
+}
+
+.m-floatLayer_content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 90%;
+    transform: translate(-50%,-50%);
+    padding-top: 1px;
+    padding-bottom: 1px;
+    color: white;
+    font-size: 26rpx;
+    line-height: 26rpx;
+    text-align: center;
+}
+
+.m-floatLayer_text {
+    line-height: 46rpx;
+}
+
+.m-floatLayer_link {
+    margin-top: 40rpx;
+}
+
+.m-floatLayer_btn {
+    margin-top: 30rpx;
+}
+
+.m-floatLayer_errorCode {
+    margin-top: 60rpx;
+    font-size: 26rpx;
+    color: rgb(68,68,68);
+}
+
+.c-iconBtn-black {
+    display: inline-block;
+    min-width: 248rpx;
+    padding-top: 21rpx;
+    padding-bottom: 21rpx;
+    height: 26rpx;
+    line-height: 26rpx;
+    text-align: center;
+    background-color: #272727;
+    color: #0bbe06;
+    border: 1rpx solid #353535;
+    border-radius: 70rpx;
+}
+
+.c-loading_logo {
+    width: 350rpx;
+    height: 118rpx;
+    margin-bottom: 7rpx;
+}
+
+.c-icon-loading {
+    margin-top: -7rpx;
+    margin-right: 14rpx;
+}
+
+.c-icon-refresh {
+    margin-left: 14rpx;
+}
+
+.c-icon-play-line {
+    margin-right: 14rpx;
+}
+
+.m-floatLayer .vipPlayer-tipbg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.m-vipLayer_link {
+    margin-top: 30rpx;
+}
+
+.c-iconBtn-orange {
+    display: inline-block;
+    padding: 17rpx 40rpx;
+    background: #cd9e62;
+    border: 2rpx solid #21182c;
+    border-radius: 32rpx;
+}
+
+.c-text-orange {
+    color: #582d00;
+}
+
+.free-time-tip {
+    display: inline-block;
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    font-size: 24rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.prevue-tip {
+    display: inline-block;
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    font-size: 24rpx;
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+}
+
+.free-time-tip-text {
+    display: inline;
+    color: #0bbe06;
+    font-weight: 500;
+}
+
+.prevue-text {
+    display: inline;
+    font-weight: 500;
+}
+
+.prevue-bg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 145rpx;
+    z-index: 1;
+}
+
+.m-floatLayer-short {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 5;
+}
+
+.m-videopic_title {
+    position: absolute;
+    height: 150rpx;
+    top: 0;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
+    background-repeat: repeat-x;
+}
+
+.m-videopic_title_text {
+    font-size: 36rpx;
+    line-height: 46rpx;
+    color: #fff;
+    padding: 12rpx 20rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: 700;
+}
+
+.m-floatLayer.m-floatLayer-live {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.m-floatLayer-live_text {
+    font-size: 36rpx;
+    color: #fff;
+    font-weight: 700;
+    height: 36rpx;
+    line-height: 36rpx;
+}
+
+.m-floatLayer-live-time {
+    font-size: 24rpx;
+    color: #fff;
+    padding: 30rpx 0 15rpx;
+}

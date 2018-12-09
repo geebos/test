@@ -1,0 +1,16 @@
+<template name="m-rank-category">
+    <view class="m-rank-categories">
+        <view class="m-rank-wrap">
+            <scroll-view class="m-categories-scroll" scrollIntoView="category_{{scrollIntoViewId}}" scrollX="true">
+                <view bindtap="switchChannel" class="m-categories-item" data-cid="{{item.cid}}" data-mode="{{mode}}" id="category_{{item.cid}}" wx:for="{{categories}}" wx:key="key">
+                    <text class="m-categories-item-text {{mode.cid==item.cid?'selected':''}}" data-cid="{{item.cid}}">{{item.label}}</text>
+                    <image class="m-categories-item_bottom" hidden="{{mode.cid==item.cid?false:true}}" src="/resource/images/rank-category-selected.png"></image>
+                </view>
+            </scroll-view>
+        </view>
+        <view bindtap="handleCategoryList" class="m-rank-category-icon">
+            <image class="m-rank-category-shadow" src="/resource/images/rank-category-shadow.png"></image>
+            <image class="m-rank-category-image" src="{{isFolded?'/resource/images/rank-unfold.png':'/resource/images/rank-fold.png'}}"></image>
+        </view>
+    </view>
+</template>

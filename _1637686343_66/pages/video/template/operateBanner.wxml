@@ -1,0 +1,10 @@
+<template name="operateBanner">
+    <view class="banner-box">
+        <button bindtap="openOperateLink" class="c-btn btn-style-reset" data-aid="{{aid}}" data-cid="{{cid}}" data-operate-type="{{wxplayer_type}}" wx:if="{{wxplayer_type==1||wxplayer_type==2}}">
+            <image class="c-banner-img" mode="widthFix" src="{{wxplayer_img}}" style="height:0"></image>
+        </button>
+        <button appParameter="{{!launchApp?'':wxplayer_type==3&&wxplayer_schema?wxplayer_schema:pluginParams}}" binderror="{{launchApp?'launchAppError':''}}" bindtap="openOperateLink" class="c-btn btn-style-reset" data-aid="{{aid}}" data-cid="{{cid}}" data-operate-type="{{wxplayer_type}}" openType="{{launchApp?'launchApp':''}}" wx:elif="{{wxplayer_type==3||wxplayer_type==4}}">
+            <image class="c-banner-img" mode="widthFix" src="{{wxplayer_img}}" style="height:0"></image>
+        </button>
+    </view>
+</template>

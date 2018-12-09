@@ -1,0 +1,20 @@
+<import src="/components/template/scrollCard.wxml"></import>
+<import src="singleVideoDetail.wxml"></import>
+<import src="/components/comment/comment.wxml"></import>
+<import src="../template/operateBanner.wxml"></import>
+<import src="../template/share.wxml"></import>
+<import src="../template/videoSource.wxml"></import>
+<scroll-view bindscrolltolower="{{newComments.comments.length>0?'scrolltoBottom':''}}" class="scrollBody" scrollTop="{{scrollTopHeight}}" scrollY="true" style="height:{{scrollBodyHeight+'px'}};">
+    <template is="operateBanner" data="{{...resourceInfo,aid:playInfo.albumId,cid:playInfo.channelId,launchApp:launchApp,pluginParams:pluginParams}}" wx:if="{{resourceInfo&&resourceInfo.showBanner}}"></template>
+    <template is="singleVideoDetail" data="{{...playInfo,...desc,videoTitleObj:videoTitleObj}}"></template>
+    <template is="album-social-single-box" data="{{ifCanIUse:ifCanIUse,...playInfo,agreeSingleVideo:agreeSingleVideo,totalComments:totalComments}}" wx:if="{{originPlayInfo.subType=='single'}}"></template>
+    <include src="/components/template/m-adj-banner.wxml" wx:if="{{hotDanceInfo.Rx_ShowOn=='true'&&playInfo.albumQipuId==hotDanceInfo.valid_album_id&&hotDanceInfo.wxh5_url&&hotDanceInfo.h5_img}}"></include>
+    <template is="videoSource" data="{{...featureInfo,pluginParams:singlePluginParams}}" wx:if="{{featureInfo}}"></template>
+    <template is="scrollCard" data="{{...bestView,qipuId:playInfo.qipuId,bindItemTap:'playVideoAlbum'}}" wx:if="{{bestView.videos.length>0}}"></template>
+    <template is="scrollCard" data="{{...recommendVideos,qipuId:playInfo.qipuId,bindItemTap:'playRecommendVideo'}}" wx:elif="{{recommendVideos.videos.length>0}}"></template>
+    <view class="commentsPart" id="commentsPart">
+        <template is="comment" data="{{...hotComments,isHotFolded:isHotFolded,foldSize:4}}"></template>
+        <template is="comment" data="{{...newComments,...commentCondition,load:subLoad,pluginParams:pluginParams,launchApp:launchApp}}"></template>
+    </view>
+    <include src="/components/template/footer.wxml"></include>
+</scroll-view>

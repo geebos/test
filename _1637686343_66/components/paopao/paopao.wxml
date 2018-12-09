@@ -1,0 +1,72 @@
+<template name="m-search-paopao">
+    <block wx:if="{{isSupportMiniprogram}}">
+        <view class="m-search-paopao-box" wx:if="{{wallBaseInfo&&wallBaseInfo.length>2}}">
+            <navigator appId="wxba59214d98c13a15" bindtap="goCircle" class="m-paopao-title" data-circle-block="wx_bubbles" data-circle-rseat="wx_intobubbles" hoverClass="none" openType="navigate" path="pages/rankingList/rankingList" target="miniProgram">
+                <text class="m-paopao-text">泡泡</text>
+            </navigator>
+            <scroll-view class="m-scrollList-paopao" scrollLeft="0" scrollX="true">
+                <view class="m-paopao-star" wx:for="{{wallBaseInfo}}" wx:key="index">
+                    <navigator appId="wxba59214d98c13a15" bindtap="goCircle" class="search-paopao-img" data-circle-block="wx_bubbles" data-circle-id="{{item.id}}" data-circle-rseat="wx_stars2" hoverClass="none" openType="navigate" path="pages/circlePack/pages/circle/circle?wallid={{item.id}}" target="miniProgram">
+                        <image class="star-icon" src="{{item.image_url}}"></image>
+                    </navigator>
+                    <view class="search-paopao-text">
+                        <navigator appId="wxba59214d98c13a15" bindtap="goCircle" class="paopao-name" data-circle-block="wx_bubbles" data-circle-id="{{item.id}}" data-circle-rseat="wx_stars2" hoverClass="none" openType="navigate" path="pages/circlePack/pages/circle/circle?wallid={{item.id}}" target="miniProgram">{{item.title}}</navigator>
+                        <navigator appId="wxba59214d98c13a15" bindtap="goCircle" class="paopao-in" data-circle-block="wx_bubbles" data-circle-id="{{item.id}}" data-circle-rseat="wx_intobubbles" hoverClass="none" openType="navigate" path="pages/circlePack/pages/circle/circle?wallid={{item.id}}" target="miniProgram">
+                            <text>进圈</text>
+                        </navigator>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </block>
+</template>
+<template name="m-circle-scroll">
+    <scroll-view class="m-scrollList-paopao" scrollLeft="0" scrollX="true">
+        <view class="m-scrollList-inner">
+            <view bindtap="goCircle" class="m-paopao-star" data-circle-id="{{item.id}}" wx:for="{{wallBaseInfo}}" wx:key="index">
+                <block wx:if="{{collectFormId}}">
+                    <navigator appId="wxba59214d98c13a15" hoverClass="none" openType="navigate" path="pages/circlePack/pages/circle/circle?wallid={{item.id}}" target="miniProgram" wx:if="{{isSupportMiniprogram}}">
+                        <form bindsubmit="getFormId" class="collect-form" data-rseat="{{rseat}}" reportSubmit="true">
+                            <button class="collect-paopao-btn btn-style-reset" formType="submit">
+                                <image class="star-icon" src="{{item.icon}}"></image>
+                                <text class="star-name">{{item.name}}</text>
+                            </button>
+                        </form>
+                    </navigator>
+                    <form bindsubmit="getFormId" class="collect-form" data-rseat="{{rseat}}" reportSubmit="true" wx:else>
+                        <button class="collect-paopao-btn btn-style-reset" formType="submit">
+                            <image class="star-icon" src="{{item.icon}}"></image>
+                            <text class="star-name">{{item.name}}</text>
+                        </button>
+                    </form>
+                </block>
+                <block wx:else>
+                    <navigator appId="wxba59214d98c13a15" hoverClass="none" openType="navigate" path="pages/circlePack/pages/circle/circle?wallid={{item.id}}" target="miniProgram" wx:if="{{isSupportMiniprogram}}">
+                        <image class="star-icon" src="{{item.icon}}"></image>
+                        <text class="star-name">{{item.name}}</text>
+                    </navigator>
+                    <block wx:else>
+                        <image class="star-icon" src="{{item.icon}}"></image>
+                        <text class="star-name">{{item.name}}</text>
+                    </block>
+                </block>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<template name="starUp">
+    <view class="m-box m-box-paopao" wx:if="{{wallBaseInfo.length>2}}">
+        <view class="m-box-paopao-inner">
+            <view class="m-title">
+                <text class="m-title_h">{{title?title:'参演明星'}}</text>
+                <view bindtap="goCircle" class="m-title_more" wx:if="{{toIndex===true}}">
+                    <navigator appId="wxba59214d98c13a15" hoverClass="none" openType="navigate" path="pages/rankingList/rankingList" target="miniProgram">
+                        <text class="m-title_moreTx">明星UP榜</text>
+                        <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow-green.png" width="15"></image>
+                    </navigator>
+                </view>
+            </view>
+            <template is="m-circle-scroll" data="{{wallBaseInfo:wallBaseInfo,collectFormId:collectFormId,rseat:rseat,isSupportMiniprogram:isSupportMiniprogram}}"></template>
+        </view>
+    </view>
+</template>

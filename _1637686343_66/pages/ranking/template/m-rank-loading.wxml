@@ -1,0 +1,18 @@
+<template name="m-rank-loading">
+    <view class="m-filmLibrary-loading" wx:if="{{load=='show'}}">
+        <text class="m-record-loading-base">正在加载...</text>
+    </view>
+    <view bindtap="{{errorHandler}}" class="m-filmLibrary-loading" wx:if="{{load=='error'}}">
+        <text>加载失败，请重试</text>
+    </view>
+    <view class="m-filmLibrary-loading" wx:if="{{load=='nomore'}}">
+        <text>人家也是有底线的</text>
+    </view>
+    <view bindtap="{{errorHandler}}" class="m-box-cover" style="position: relative;" wx:if="{{load=='firstError'}}">
+        <view class="m-tips">
+            <image class="c-icon-tips" height="90" src="/resource/images/c-icon-tips.png" width="90"></image>
+            <text class="m-tips_tx">未获取到内容</text>
+            <text class="m-tips_tx">请点击页面重试</text>
+        </view>
+    </view>
+</template>

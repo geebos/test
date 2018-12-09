@@ -1,0 +1,7 @@
+<template name="m-rank-category-expand">
+    <view class="rank-category-expand" hidden="{{isFolded}}">
+        <view bindtap="switchCategory" class="rank-category-expand-item" data-cid="{{item.cid}}" wx:for="{{categories}}" wx:key="key">
+            <view class="rank-expand-item-text {{mode.cid==item.cid?'selected':''}}">{{item.label}}</view>
+        </view>
+    </view>
+</template>

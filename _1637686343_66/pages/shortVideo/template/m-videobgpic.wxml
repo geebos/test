@@ -1,0 +1,17 @@
+<template name="videobgpic">
+    <view catchtap="playCurrentVideo" class="m-videopic m-floatLayer-short" data-area="{{pingback.area}}" data-bkt="{{pingback.bkt}}" data-eventid="{{pingback.event_id}}" data-feedid="{{item.feedId}}" data-rank="{{index}}" data-tvid="{{item.tvId}}" style="z-index: 1;">
+        <image class="m-videopic_pic" src="{{item.thumbnail}}"></image>
+        <image class="c-icon-play" height="55" mode="aspectFit" src="/resource/images/c-icon-play-new.png" style="top:156rpx" width="55"></image>
+        <view class="m-videopic_title">
+            <text class="m-videopic_title_text">{{item.tvTitle}}</text>
+        </view>
+        <view class="m-videopic_info">
+            <view class="m-videopic_num" wx:if="{{filterStatus&&filterStatus==5}}">
+                <text class="m-video-text-shadow">{{item.playCount}}次播放</text>
+            </view>
+            <view class="m-videopic_time">
+                <text class="m-video-text-shadow">{{item.duration}}</text>
+            </view>
+        </view>
+    </view>
+</template>

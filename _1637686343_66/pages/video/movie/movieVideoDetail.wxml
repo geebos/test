@@ -1,0 +1,27 @@
+<template name="movieVideoDetail">
+    <view class="m-film">
+        <view>
+            <view class="m-film_title">
+                <text bindtap="goAlbumInfo" class="album-name">{{videoTitleObj.shortTitle||videoTitleObj.albumName}}</text>
+                <image animation="{{filmAnimation}}" bindtap="switchDesc" class="c-icon-bottom" src="/resource/images/c-icon-bottom.png" wx:if="{{mainActors||tags||desc}}"></image>
+            </view>
+            <block wx:if="{{filterStatus&&filterStatus==6}}">
+                <view class="m-film_update" wx:if="{{videoHotNum}}">热度：{{videoHotNum}}</view>
+            </block>
+        </view>
+        <view class="m-film_details" wx:if="{{showDesc&&(mainActors||tags||desc||directors)}}">
+            <view wx:if="{{tags}}">
+                <text>类型：{{tags}}</text>
+            </view>
+            <view class="text-ellips" wx:if="{{directors}}">
+                <text>导演：{{directors}}</text>
+            </view>
+            <view wx:if="{{mainActors}}">
+                <text>主演：{{mainActors}}</text>
+            </view>
+            <view class="m-film_intro" wx:if="{{desc}}">
+                <text>简介：{{desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>

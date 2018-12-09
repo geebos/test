@@ -1,0 +1,24 @@
+<template name="m-rank-list">
+    <view class="m-rank-list" hidden="{{hidden}}">
+        <scroll-view bindscrolltolower="onScrollToLower" class="m-rank-list-scroll" scrollY="true" scrollTop="{{scrollTop}}">
+            <view class="m-rank-list-item" wx:for="{{listData.items}}" wx:key="key">
+                <view class="m-rank-left {{isIos?'m-rank-icon-ios':''}}">
+                    <image class="m-rank-image" mode="aspectFill" src="{{item.imageUrl?item.imageUrl:'/resource/images/list-livevideo-list-bg.png'}}"></image>
+                    <image class="m-rank-icon" mode="aspectFill" src="{{item.iconUrl}}"></image>
+                    <template is="icon" data="{{isVip:item.isVip,isPaid:item.isPaid,isCoupon:item.isCoupon,isQiyiProduced:item.isQiyiProduced,isExclusive:item.isExclusive}}"></template>
+                    <text class="m-rank-num {{item.numClass?item.numClass:''}}">{{item.index}}</text>
+                    <image class="m-rank-shadow" mode="aspectFill" src="/resource/images/rank-shadow-bg.png"></image>
+                    <view class="m-rank-bottom-right" wx:if="{{item.bottomRightCorner}}">{{item.bottomRightCorner}}</view>
+                </view>
+                <view class="m-rank-info">
+                    <view class="m-rank-title">{{item.mainTitle}}</view>
+                    <view class="m-rank-subtitle">{{item.subTitle}}</view>
+                    <view class="m-rank-hot {{item.subTitle?'':'rank-hot-padding'}}" wx:if="{{item.originNum}}">{{item.showNumTitle}} {{item.formatNum}}</view>
+                </view>
+            </view>
+            <template is="m-rank-loading" data="{{load:load,errorHandler:'retryLoadData'}}"></template>
+        </scroll-view>
+    </view>
+</template>
+<import src="./m-rank-loading.wxml"></import>
+<import src="/components/template/icon.wxml"></import>

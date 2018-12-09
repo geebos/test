@@ -1,0 +1,82 @@
+<template name="mini-video-loading">
+    <cover-view class="mini-loading-box mini-cover-box" wx:if="{{rpage==='wx_smallvideo'}}">
+        <cover-view class="mini-loading-box mini-cover-box" hidden="{{!showLoadingCover}}">
+            <cover-image class="mini-loading-img" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-default-bg2.jpg"></cover-image>
+            <cover-view class="absolute-loading-box">
+                <cover-image class="container-bg-icon" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-refresh-icon.png"></cover-image>
+                <cover-view class="container-bg-text">正在全力加载...</cover-view>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>
+<template name="mini-video-cover">
+    <cover-view class="mini-cover-container" wx:if="{{rpage==='wx_smallvideo'}}">
+        <cover-view bindtap="{{bindEvent}}" class="mini-cover-box" hidden="{{!(showMiniCover&&isSupportCover&&!showLoadingCover)}}">
+            <cover-view class="cover-image-box" hidden="{{!showStatusIcon}}">
+                <cover-image class="cover-icon" hidden="{{isPlaying}}" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-play-icon.png"></cover-image>
+            </cover-view>
+            <cover-image class="video-play-shadow" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-shadow.png"></cover-image>
+            <cover-image class="video-text-shadow" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-text-shadow.png"></cover-image>
+            <cover-view class="mini-img-box mini-right-down">
+                <button appParameter="{{spacePluginParams}}" binderror="launchError" catchtap="launchPingback" class="mini-user-profile-box btn-style-reset" data-launch-rseat="wx_launchApp" openType="launchApp" wx:if="{{spacePluginParams&&launchApp&&isSupportWrapBtn}}">
+                    <cover-view>
+                        <cover-image class="mini-user-profile" src="{{icon}}"></cover-image>
+                    </cover-view>
+                </button>
+                <cover-image catchtap="handleAvatar" class="mini-user-profile" src="{{icon}}" wx:else></cover-image>
+            </cover-view>
+            <cover-view catchtap="voteEvt" class="mini-agree-box mini-right-down" data-has-liked="{{hasLike}}">
+                <cover-image class="agree-icon" src="{{hasLike?'http://statics-web.iqiyi.com/h5/wechat/images/mini-like.png':'http://statics-web.iqiyi.com/h5/wechat/images/miniLike2.png'}}"></cover-image>
+                <cover-view class="agree-count mini-right-down-txt">{{likes>0?likesDisplay:''}}</cover-view>
+            </cover-view>
+            <cover-view catchtap="coverTapTip" class="mini-share-box mini-right-down" data-tip-type="share">
+                <button class="mini-wrap-btn btn-style-reset" openType="share" wx:if="{{isSupportWrapBtn}}">
+                    <cover-image class="share-icon" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-share.png"></cover-image>
+                    <cover-view class="share-txt mini-right-down-txt">分享</cover-view>
+                </button>
+                <block wx:else>
+                    <cover-image class="share-icon" src="http://statics-web.iqiyi.com/h5/wechat/images/mini-share.png"></cover-image>
+                    <cover-view class="share-txt mini-right-down-txt">分享</cover-view>
+                </block>
+            </cover-view>
+            <cover-view class="mini-info-box">
+                <cover-view class="mini-user-info">
+                    <button appParameter="{{spacePluginParams}}" binderror="launchError" bindtap="launchPingback" class="launch-btn btn-style-reset" data-launch-rseat="wx_launchApp" openType="launchApp" wx:if="{{launchApp&&spacePluginParams&&username&&isSupportWrapBtn}}">
+                        <cover-view class="mini-user-name text-ellips" wx:if="{{username}}">@{{username}}</cover-view>
+                    </button>
+                    <block wx:else>
+                        <cover-view class="mini-user-name text-ellips" wx:if="{{username}}">@{{username}}</cover-view>
+                    </block>
+                    <cover-view class="mini-user-desc text-ellips" wx:if="{{title}}">{{title}}</cover-view>
+                </cover-view>
+            </cover-view>
+            <cover-view class="progress-box" wx:if="{{duration>15}}">
+                <cover-view class="progress-content" style="width:{{percent}}%"></cover-view>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>
+<template name="videoCollect">
+    <video autoplay="{{show&&fragmentIndex>0}}" bindended="bindended" binderror="binderror" bindfullscreenchange="screenChangeHandle" bindpause="bindpause" bindplay="bindplay" bindtimeupdate="bindtimeupdate" class="video" hidden="{{!(show&&fragmentIndex>0)}}" id="videoCollect" objectFit="contain" src="{{url}}"></video>
+</template>
+<template name="videoFragment">
+    <video autoplay="{{show&&fragmentIndex===0}}" bindended="bindended" binderror="binderror" bindfullscreenchange="screenChangeHandle" bindpause="bindpause" bindplay="bindplay" bindtimeupdate="bindtimeupdate" class="video" danmuList="{{danmuList}}" enableDanmu="true" hidden="{{!(show&&fragmentIndex===0)}}" id="videoFragment" objectFit="contain" src="{{url}}"></video>
+</template>
+<template name="video">
+    <video autoplay="{{show}}" bindended="bindended" binderror="binderror" bindfullscreenchange="screenChangeHandle" bindpause="bindpause" bindplay="bindplay" bindtimeupdate="bindtimeupdate" class="video" controls="{{coverData.showControl===false?coverData.showControl:true}}" hidden="{{!show}}" id="videoId" objectFit="{{objectFit===true?'cover':'contain'}}" showFullscreenBtn="{{coverData.showFullScreen===false?coverData.showFullScreen:true}}" src="{{url}}">
+        <cover-view bindtap="manualPlay" class="cover-video-box" wx:if="{{coverImage===true}}">
+            <cover-image class="cover-video-img" src="http://statics-web.iqiyi.com/h5/wechat/images/cover_bg.png"></cover-image>
+        </cover-view>
+        <template is="mini-video-loading" data="{{...coverData,rpage:rpage}}"></template>
+        <template is="mini-video-cover" data="{{showMiniCover:showMiniCover,...coverData,bindEvent:bindEvent,...initData,launchApp:launchApp,spacePluginParams:spacePluginParams,rpage:rpage}}"></template>
+        <cover-image class="prevue-bg" src="/resource/images/prevue-bg.png" wx:if="{{isPrevue&&watermark}}"></cover-image>
+        <cover-view class="prevue-tip" wx:if="{{isPrevue&&watermark}}">
+            <cover-view class="prevue-text">正在播放</cover-view>
+            <cover-view class="free-time-tip-text">{{watermark}}</cover-view>
+            <cover-view class="prevue-text">，请使用APP观看正片</cover-view>
+        </cover-view>
+        <cover-view class="cover-video-box" data-and="{{isAndroid}}" style="{{fullScreen?'position:absolute;top:58rpx;right:70rpx;width:194rpx;height:65rpx':'position:absolute;top:3.06vw;right:4vw;width:18.67vw;height:6.13vw'}}" wx:if="{{show&&!isPrevue&&brandMarkFlag}}">
+            <cover-image class="cover-video-img" src="http://statics-web.iqiyi.com/h5/wechat/images/video-watermark.png" style="width: 100%;height: 100%;"></cover-image>
+        </cover-view>
+    </video>
+</template>

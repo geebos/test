@@ -1,0 +1,57 @@
+<template name="tagFullBlock">
+    <view class="m-list" wx:if="{{showList.length>0}}">
+        <view class="m-title" wx:if="{{tagName}}">
+            <text class="m-title_h">{{tagName}}</text>
+            <form bindsubmit="findMore" class="m-form_common" data-card-type="{{cardType}}" data-channelid="{{channelId}}" data-more-url="{{kvs.card_more_url}}" data-rseat="wx_home_more" reportSubmit="true" wx:if="{{kvs.card_more_title}}">
+                <button class="m-title_more button-in-form" formType="submit">
+                    <text class="m-title_moreTx">{{kvs.card_more_title}}</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" width="15"></image>
+                </button>
+            </form>
+        </view>
+        <view class="full-card-box">
+            <template is="tagFullCard" data="{{...item,bindtapFn:bindtapFn,catchtapFn:catchtapFn,liveCardFolded:liveCardFolded,index:index}}" wx:for="{{showList}}" wx:key="{{index}}"></template>
+            <view class="card-fold-box" hidden="{{!liveCardFolded}}">
+                <view bindtap="toggleFoldState" class="card-fold-inner">
+                    <text class="card-fold-text">展开</text>
+                    <image class="card-fold-icon" src="/resource/images/mini-fold.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="fold-box"></view>
+    </view>
+</template>
+<template name="tagSwiper">
+    <view class="m-list">
+        <view class="m-title">
+            <text class="m-title_h">{{tagName}}</text>
+            <form bindsubmit="findMore" class="m-form_common" data-card-type="{{cardType}}" data-channelid="{{channelId}}" data-more-url="{{kvs.card_more_url}}" data-rseat="wx_home_more" reportSubmit="true" wx:if="{{kvs.card_more_title}}">
+                <button class="m-title_more button-in-form" formType="submit">
+                    <text class="m-title_moreTx">{{kvs.card_more_title}}</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" width="15"></image>
+                </button>
+            </form>
+        </view>
+        <scroll-view class="{{listClass}}" data-img-type="focus" duration="1000" scrollX="0">
+            <template is="tagSwiperCard" data="{{...item,cardMcnt:kvs.card_mcnt,bindtapFn:bindtapFn,cardType:cardType}}" wx:for="{{showList}}" wx:key="order"></template>
+        </scroll-view>
+    </view>
+</template>
+<template name="tagBlock">
+    <view class="m-list">
+        <view class="m-title">
+            <text class="m-title_h">{{tagName}}</text>
+            <form bindsubmit="findMore" class="m-form_common" data-card-type="{{cardType}}" data-channelid="{{channelId}}" data-more-url="{{kvs.card_more_url}}" data-rseat="wx_home_more" reportSubmit="true" wx:if="{{kvs.card_more_title}}">
+                <button class="m-title_more button-in-form" formType="submit">
+                    <text class="m-title_moreTx">{{kvs.card_more_title}}</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" width="15"></image>
+                </button>
+            </form>
+        </view>
+        <view class="{{listClass}}">
+            <template is="singleCard" data="{{...item,cardMcnt:kvs.card_mcnt,bindtapFn:bindtapFn,listItemClass:listItemClass,itemPicClass:itemPicClass,block:block,index:index,cardType:cardType,isSub:isSub}}" wx:for="{{showList}}" wx:key="order"></template>
+        </view>
+    </view>
+</template>
+<import src="/components/template/singleCard.wxml"></import>
+<import src="/components/template/tagSwiperCard.wxml"></import>

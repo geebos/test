@@ -1,0 +1,29 @@
+<import src="/components/player/video.wxml"></import>
+<import src="/components/videoLayout/videoLayout.wxml"></import>
+<import src="template/m-subTab.wxml"></import>
+<import src="template/m-filmLibrary-loading.wxml"></import>
+<import src="template/m-loadingEnd.wxml"></import>
+<import src="template/m-short-handle.wxml"></import>
+<import src="template/m-videobgpic.wxml"></import>
+<view class="container">
+    <template is="m-loadingEnd" data="{{recommend:recommend,showFeedToast:showFeedToast}}" wx:if="{{load=='complete'||load=='error'||load=='nomore'}}"></template>
+    <view class="m-box">
+        <view id="node_{{item.tvId}}" wx:for="{{videos.videolist}}" wx:key="index">
+            <view class="last-record-load" wx:if="{{item.isTopFlag}}">
+                <view bindtap="pullRefresh" class="last-record-load-content">
+                    <text>上次看到这里，点击刷新</text>
+                    <image class="c-short-icon-refresh" src="/resource/images/refresh.png"></image>
+                </view>
+            </view>
+            <view class="m-video m-play">
+                <template is="videobgpic" data="{{item:item,filterStatus:filterStatus,pingback:trackParams.pingback,index:index}}"></template>
+            </view>
+            <template is="m-short-handle" data="{{video:item,isSurportBtnShare:isSurportBtnShare,pingback:trackParams.pingback,index:index,filterStatus:filterStatus,showShare:showShare}}"></template>
+        </view>
+        <view class="m-video m-play" data-video="{{video[0]}}" hidden="{{!playInfo.showVideo}}" style="position: absolute; z-index: 1; top: {{videoTop}}px;">
+            <template is="video" data="{{...video,show:videoLayout.canPlay&&!videoLayout.videoLoading}}"></template>
+            <template is="videoLayout" data="{{...videoLayout}}"></template>
+        </view>
+    </view>
+    <template is="m-filmLibrary-loading" data="{{load:load,errorHandler:'retryLoadPage'}}"></template>
+</view>

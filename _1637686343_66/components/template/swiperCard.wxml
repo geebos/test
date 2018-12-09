@@ -1,0 +1,20 @@
+<template name="swiperDot">
+    <view class="swiper-dot-box">
+        <view class="swiper-dot-item {{index+1==focusIndex?'dot-selected':''}}" wx:for="{{focus}}" wx:key="{{index}}"></view>
+    </view>
+</template>
+<template name="swiperCard">
+    <swiper-item bindtap="{{bindtapFn}}" class="m-swiperList_item" data-card-type="{{cardType}}" data-index="{{index}}" data-order="{{order}}" data-qipu-id="{{qipuId}}">
+        <view class="m-swiperList_item-wrap">
+            <view class="m-swiperList_cover">
+                <image class="m-swiperList_img" height="100" mode="aspectFill" src="{{bgImg}}" width="75"></image>
+            </view>
+            <view class="m-swiperList-shadow">
+                <view class="m-swiperList_info">
+                    <text class="m-swiperList_info-h2">{{mainTitle}}</text>
+                </view>
+            </view>
+        </view>
+    </swiper-item>
+</template>
+<import src="/components/template/icon.wxml"></import>

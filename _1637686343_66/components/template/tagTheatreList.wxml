@@ -1,0 +1,38 @@
+<template name="theatreCard">
+    <form bindsubmit="{{bindtapFn}}" class="m-list-horizontal_item" data-card-mcnt="{{cardMcnt}}" data-card-type="{{cardType}}" data-index="{{index}}" data-qipu-id="{{qipuId}}" reportSubmit="true">
+        <button class="button-in-form" formType="submit">
+            <view class="m-list-horizontal_item-pic">
+                <image class="m-list_item-pic_image" height="165" mode="aspectFill" src="{{imageUrl}}" width="124"></image>
+                <view class="m-list_c-rb">
+                    <view class="m-list_c-name" wx:if="{{username}}">
+                        <image alt="主播昵称" class="c-icon-user" height="22" src="/resource/images/c-icon-user.png" width="26"></image>{{username}}
+            </view>
+                    <view class="m-list_c-date" wx:if="{{bottomRightCorner}}">
+                        <image alt="观影人数" class="c-icon-font-fire" height="22" src="/resource/images/icon-fire-white@3x.png" width="22"></image>{{bottomRightCorner}}
+            </view>
+                </view>
+                <image class="c-icon-live-on" height="13" mode="aspectFit" src="/resource/images/c-icon-live-on.png" width="22" wx:if="{{true}}"></image>
+            </view>
+            <view class="m-list-picTitle">
+                <text>{{mainTitle}}</text>
+            </view>
+        </button>
+    </form>
+</template>
+<template name="tagTheatreList">
+    <view class="m-list">
+        <view class="m-title">
+            <text class="m-title_h">{{tagName}}</text>
+            <form bindsubmit="findMore" class="m-form_common" data-card-type="{{cardType}}" data-channelid="{{channelId}}" data-more-url="{{kvs.card_more_url}}" data-rseat="wx_home_more" reportSubmit="true" wx:if="{{kvs.card_more_title}}">
+                <button class="m-title_more button-in-form" formType="submit">
+                    <text class="m-title_moreTx">{{kvs.card_more_title}}</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" width="15"></image>
+                </button>
+            </form>
+        </view>
+        <view class="m-list-horizontal_content">
+            <template is="theatreCard" data="{{...item,cardMcnt:kvs.card_mcnt,bindtapFn:bindtapFn,listItemClass:listItemClass,itemPicClass:itemPicClass,block:block,index:index,cardType:cardType}}" wx:for="{{showList}}" wx:key="order"></template>
+        </view>
+    </view>
+</template>
+<import src="/components/template/icon.wxml"></import>

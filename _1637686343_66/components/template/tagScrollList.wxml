@@ -1,0 +1,36 @@
+<template name="tagScrollList">
+    <view class="m-list">
+        <view class="m-title">
+            <text class="m-title_h">{{tagName}}</text>
+            <form bindsubmit="findMore" class="m-form_common" data-card-type="{{cardType}}" data-channelid="{{channelId}}" data-more-url="{{kvs.card_more_url}}" data-rseat="wx_home_more" reportSubmit="true" wx:if="{{kvs.card_more_title&&kvs.card_more_url}}">
+                <button class="m-title_more button-in-form" formType="submit">
+                    <text class="m-title_moreTx">{{kvs.card_more_title}}</text>
+                    <image class="c-icon-more" height="15" src="/resource/images/c-icon-arrow.png" width="15"></image>
+                </button>
+            </form>
+        </view>
+        <scroll-view class="m-scrollList m-scrollList-titleonly m-scrollList-smallSpacing m-scrollList-desList" scrollX="true">
+            <view class="m-scrollList-inner">
+                <view bindtap="{{bindtapFn}}" class="m-scrollList_item" data-card-mcnt="{{kvs.card_mcnt}}" data-card-type="{{cardType}}" data-qipu-id="{{item.qipuId}}" wx:for="{{showList}}" wx:key="index">
+                    <view class="m-scrollList_imgBox">
+                        <image class="m-scrollList_img" height="73" mode="aspectFill" src="{{item.imageUrl}}" width="130"></image>
+                        <view class="m-scrollList_update" wx:if="{{item.bottomRightCorner}}">
+                            <view class="m-scrollList_updateTx">
+                                <image alt="观影人数" class="c-icon-doubleMan" height="22" src="/resource/images/c-icon-doubleMan.png" width="26"></image>{{item.bottomRightCorner}}
+                      </view>
+                        </view>
+                        <image class="c-icon-live-on" height="13" mode="aspectFit" src="/resource/images/c-icon-live-on.png" width="22" wx:if="{{true}}"></image>
+                    </view>
+                    <view class="m-scrollList_title " wx:if="{{item.mainTitle}}">
+                        <text>{{item.mainTitle}}</text>
+                    </view>
+                    <view class="m-scrollList_des {{item.mainTitle?'':'m-scrollList_des_only'}}" wx:if="{{item.username}}">
+                        <image alt="观影人" class="c-icon-man" height="22" src="/resource/images/c-icon-man.png" width="20"></image>
+                        <text>{{item.username}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</template>
+<import src="/components/template/icon.wxml"></import>

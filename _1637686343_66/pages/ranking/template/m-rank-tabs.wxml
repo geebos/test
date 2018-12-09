@@ -1,0 +1,7 @@
+<template name="m-rank-tabs">
+    <view class="m-rank-tab">
+        <view class="m-rank-tab-wrap" wx:for="{{tabs}}" wx:key="key">
+            <text bindtap="switchTab" class="m-rank-tab-item {{mode.tabIndex==item.index?'selected':''}}" data-tab-index="{{item.index}}">{{item.label}}</text>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,15 @@
+<import src="template/m-rank-tabs.wxml"></import>
+<import src="template/m-rank-category.wxml"></import>
+<import src="template/m-rank-list.wxml"></import>
+<import src="template/m-rank-category-expand.wxml"></import>
+<view class="container">
+    <template is="m-rank-category" data="{{categories:categories,isFolded:isFolded,mode:mode,scrollIntoViewId:scrollIntoViewId,offsetLeft:offsetLeft}}"></template>
+    <template is="m-rank-category-expand" data="{{categories:categories,isFolded:isFolded,mode:mode}}"></template>
+    <template is="m-rank-tabs" data="{{tabs:tabs,mode:mode}}"></template>
+    <template is="m-rank-list" data="{{listData:realTimeData,hidden:mode.tabIndex!=0,tabs:tabs,load:realTimeLoad,scrollTop:scrollTop,isIos:isIos}}"></template>
+    <template is="m-rank-list" data="{{listData:riseData,hidden:mode.tabIndex!=1,tabs:tabs,load:riseLoad,scrollTop:scrollTop,isIos:isIos}}"></template>
+    <template is="m-rank-list" data="{{listData:playIndexData,hidden:mode.tabIndex!=2,tabs:tabs,load:playIndexLoad,scrollTop:scrollTop,isIos:isIos}}"></template>
+    <button class="m-rank-share-btn" openType="share">
+        <image class="m-rank-share" src="/resource/images/rank-share.png"></image>
+    </button>
+</view>

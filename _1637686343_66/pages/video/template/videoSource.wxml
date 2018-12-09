@@ -1,0 +1,17 @@
+<template name="videoSource">
+    <view class="m-video-source-wrapper" hidden="{{isHidden}}">
+        <view class="m-source-title">{{featureVideoId?'节选自':'来源于'}}<text wx:if="{{channelName}}">{{channelName}}</text>
+        </view>
+        <button appParameter="{{pluginParams?pluginParams:''}}" binderror="{{pluginParams?'handleSourceLaunch':''}}" bindtap="handleSourceClick" class="m-source-content btn-style-reset" data-album-id="{{albumId}}" data-has-feature="{{hasFeatureVideo}}" data-is-effect="{{isEffect}}" data-plugin-params="{{pluginParams}}" data-qipu-id="{{qipuId}}" data-rseat="{{pluginParams?'wx_launchApp':'wx_player_feature'}}" openType="{{pluginParams?'launchApp':''}}">
+            <view class="m-source-bg">
+                <image class="m-source-image" mode="aspectFill" src="{{imageUrl?imageUrl:'/resource/images/c-source-default.jpg'}}"></image>
+                <image class="m-source-play" src="/resource/images/c-icon-frag-play.png"></image>
+            </view>
+            <view class="m-source-info">
+                <view class="m-source-name">{{videoName||albumName}}</view>
+                <view class="m-source-desc">请使用APP观看正片</view>
+            </view>
+            <view class="m-source-more">{{btnText}}</view>
+        </button>
+    </view>
+</template>

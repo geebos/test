@@ -1,0 +1,35 @@
+<template name="comment">
+    <view class="m-box m-box_comment" data-iiqq="{{isHotFolded}}" hidden="{{!isShowComment}}">
+        <view class="m-title">
+            <text class="m-title_h">{{title}}</text>
+        </view>
+        <view class="m-video_comment_item" data-ii="{{isHotFolded}}" data-index="{{index}}" hidden="{{isHotFolded==true&&index>4}}" wx:for="{{comments}}" wx:key="index">
+            <view class="m-comment_inner" hidden="{{!item.content}}">
+                <view class="m-user_left">
+                    <image class="m-user-image" src="{{item.userInfo.icon||'/resource/images/user-not-login.png'}}"></image>
+                    <image class="m-user-image-tag" src="{{'/resource/images/c-icon-comment-v.png'}}" wx:if="{{item.isStar}}"></image>
+                    <image class="m-user-image-tag" hidden="true" src="{{'/resource/images/c-icon-comment-star.png'}}" wx:elif="{{item.isKol}}"></image>
+                </view>
+                <view class="m-comment_right">
+                    <view class="m-user_block">
+                        <view class="m-user_name {{item.isStar?'m-user-name-yellow':item.isIqiyiUser?'m-user-name-green':''}}">{{item.userInfo.uname||'爱奇艺用户'}}</view>
+                    </view>
+                    <view class="m-comment_date">{{item.addTime}}</view>
+                    <view class="m-comment_text">{{item.content}}</view>
+                    <view class="m-upvote-content">
+                        <image bindtap="upvote" class="m-icon-comment_upvote" data-add-time="{{item.addTime}}" data-agree="{{item.agree||false}}" data-content-id="{{item.id}}" data-likes="{{item.likes}}" data-type="{{type}}" src="{{item.agree?'/resource/images/album-upvote-after.png':'/resource/images/album-upvote-before.png'}}"></image>
+                        <view class="m-num-comment_likes">{{item.likes?item.likes:'点赞'}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="card-fold-box" data-iiee="{{isHotFolded}}" hidden="{{!isHotFolded}}" wx:if="{{type=='hot'}}">
+            <view bindtap="toggleFoldState" class="card-fold-inner">
+                <text class="card-fold-text">查看更多</text>
+                <image class="card-fold-icon" src="/resource/images/mini-fold.png"></image>
+            </view>
+        </view>
+        <template is="m-comment-loading" data="{{load:load,isFinal:isFinal,errorHandler:'retryLoadComment',isMax:isMax,isMore:isMore,type:type}}"></template>
+    </view>
+</template>
+<import src="./commentLoading.wxml"></import>

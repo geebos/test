@@ -1,0 +1,20 @@
+<template name="singleCard">
+    <form bindsubmit="{{bindtapFn}}" class="{{listItemClass}}" data-aid="{{albumId}}" data-c-type="{{cType}}" data-card-mcnt="{{cardMcnt}}" data-card-type="{{cardType}}" data-cid="{{channelId}}" data-index="{{index}}" data-qipu-id="{{qipuId}}" data-video-type="{{videoType}}" reportSubmit="true">
+        <button class="button-in-form" formType="submit">
+            <view class="{{itemPicClass}}">
+                <image class="m-list_item-pic_image" height="165" mode="aspectFill" src="{{imageUrl}}" width="124"></image>
+                <view class="m-list_c-rb">
+                    <text class="m-list_c-date">{{bottomRightCorner}}</text>
+                </view>
+                <template is="icon" data="{{isVip:isVip,isQiyiProduced:isQiyiProduced,isExclusive:isExclusive,isCoupon:isCoupon,isPaid:isPaid,isPaiKe:isPaiKe}}"></template>
+            </view>
+            <view class="{{isSub&&subtitle?'m-list-pic_sub':'m-list-picTitle'}}">
+                <text>{{sourceName||mainTitle}}</text>
+            </view>
+            <view class="m-list-pic_subtitle" wx:if="{{isSub&&subtitle}}">
+                <text>{{subtitle}}</text>
+            </view>
+        </button>
+    </form>
+</template>
+<import src="/components/template/icon.wxml"></import>

@@ -1,0 +1,16 @@
+<template name="singleVideoDetail">
+    <view class="m-film">
+        <view class="m-film_title">
+            <text>{{videoTitleObj.shortTitle}}</text>
+            <image animation="{{filmAnimation}}" bindtap="switchDesc" class="c-icon-bottom" src="/resource/images/c-icon-bottom.png" wx:if="{{desc}}"></image>
+        </view>
+        <block wx:if="{{filterStatus&&filterStatus==6}}">
+            <view class="m-film_update" wx:if="{{hotNum}}">热度：{{hotNum}}</view>
+        </block>
+        <view class="m-film_details" wx:if="{{showDesc&&desc}}">
+            <view class="m-film_intro">
+                <text>简介：{{desc}}</text>
+            </view>
+        </view>
+    </view>
+</template>

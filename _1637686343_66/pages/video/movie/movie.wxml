@@ -1,0 +1,21 @@
+<import src="/components/template/scrollCard.wxml"></import>
+<import src="movieVideoDetail.wxml"></import>
+<import src="/components/paopao/paopao.wxml"></import>
+<import src="/components/comment/comment.wxml"></import>
+<import src="../template/operateBanner.wxml"></import>
+<import src="/components/template/scrollCard.wxml"></import>
+<import src="../template/share.wxml"></import>
+<scroll-view bindscrolltolower="{{newComments.comments.length>0?'scrolltoBottom':''}}" class="scrollBody" scrollTop="{{scrollTopHeight}}" scrollY="true" style="height:{{scrollBodyHeight+'px'}};">
+    <template is="operateBanner" data="{{...resourceInfo,aid:playInfo.albumId,cid:playInfo.channelId,launchApp:launchApp,pluginParams:pluginParams}}" wx:if="{{resourceInfo&&resourceInfo.showBanner}}"></template>
+    <template is="movieVideoDetail" data="{{...subscribePlayInfo,videoHotNum:subscribePlayInfo.hotNum,...desc,videoTitleObj:videoTitleObj}}"></template>
+    <template is="album-social-box" data="{{ifCanIUse:ifCanIUse,...subscribePlayInfo,isCollect:isCollect,totalComments:totalComments}}" wx:if="{{originPlayInfo.subType!='single'}}"></template>
+    <template is="scrollCard" data="{{...bestView,qipuId:playInfo.qipuId,bindItemTap:'playVideoAlbum'}}"></template>
+    <template is="scrollCard" data="{{...fragments,qipuId:playInfo.qipuId,bindItemTap:'playFragment'}}"></template>
+    <template is="scrollCard" data="{{...recommendVideos,qipuId:playInfo.qipuId,bindItemTap:'playRecommendVideo'}}"></template>
+    <template is="starUp" data="{{isSupportMiniprogram:ifCanIUse.toMiniProgram,wallBaseInfo:wallBaseInfo,toIndex:true,collectFormId:false,rseat:''}}"></template>
+    <view class="commentsPart" id="commentsPart">
+        <template is="comment" data="{{...hotComments,isHotFolded:isHotFolded,foldSize:4}}"></template>
+        <template is="comment" data="{{...newComments,...commentCondition,load:subLoad,pluginParams:pluginParams,launchApp:launchApp}}"></template>
+    </view>
+    <include src="/components/template/footer.wxml"></include>
+</scroll-view>

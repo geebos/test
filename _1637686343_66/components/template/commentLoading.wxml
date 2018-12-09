@@ -1,0 +1,19 @@
+<template name="m-comment-loading">
+    <view class="m-filmLibrary-loading" wx:if="{{load=='show'}}">
+        <text class="m-record-loading-base">正在加载...</text>
+    </view>
+    <view bindtap="{{errorHandler}}" class="m-filmLibrary-loading" wx:if="{{load=='error'}}">
+        <text>加载失败，请重试</text>
+    </view>
+    <view class="m-comments-empty" wx:if="{{load=='noMore'}}">
+        <image class="c-icon-tips" height="90" src="/resource/images/c-icon-tips.png" width="90"></image>
+        <text>暂时没有评论呢，不如看看精彩视频~</text>
+    </view>
+    <view wx:if="{{type=='time'&&isFinal&&load=='complete'}}">
+        <block wx:if="{{isMax}}">
+            <button appParameter="{{pluginParams}}" binderror="launchAppError" bindtap="joinClient" class="m-comment_bottom_tip m-comment-launchApp" data-launch-type="comment" openType="launchApp" wx:if="{{launchApp}}">打开APP看更多精彩评论</button>
+            <view class="m-comment_bottom_tip" wx:else>打开APP看更多精彩评论</view>
+        </block>
+        <view class="m-comment_bottom_tip" wx:elif="{{!isMax&&!isMore}}">人家也是有底线的</view>
+    </view>
+</template>

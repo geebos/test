@@ -1,0 +1,116 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/my/my",
+        "pages/library/library",
+        "pages/iqySearch/iqySearch",
+        "pages/shortVideo/shortVideo",
+        "pages/liveVideo/liveVideo",
+        "pages/specialSubject/specialSubject",
+        "pages/video/video",
+        "pages/ranking/ranking",
+        "pages/vipGuide/vipGuide",
+        "pages/userSet/userSet",
+        "pages/playLog/playLog",
+        "pages/subscribeLog/subscribeLog",
+        "pages/feedback/feedback",
+        "pages/setPhone/qiyiLogin",
+        "pages/setPhone/set",
+        "pages/loginSuc/loginSuc",
+        "pages/searchResult/searchResult",
+        "pages/setPhone/messageCodeInput",
+        "pages/webview/webview",
+        "pages/integral/detail/detail",
+        "pages/yingba/yingba",
+        "pages/clientGuide/clientGuide",
+        "pages/hd/rxjwt/vote",
+        "pages/lottery/lottery",
+        "pages/actLuckDraw/actLuckDraw",
+        "pages/actMyprize/actMyprize",
+        "pages/fragment/fragment",
+        "pages/studioTheatre/studioTheatre",
+        "pages/theatre/room",
+        "pages/miniVideo/miniVideo",
+        "pages/hd/yxgl/yxgl",
+        "pages/playDetail/playDetail",
+        "pages/userVideo/userVideo"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#1e1e1e",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#fafafa"
+    },
+    "tabBar": {
+        "color": "#666",
+        "selectedColor": "#3cc51f",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "resource/images/tab-home.png",
+                "selectedIconPath": "resource/images/tab-home-selected.png"
+            },
+            {
+                "pagePath": "pages/shortVideo/shortVideo",
+                "text": "热点",
+                "iconPath": "resource/images/shortVideo.png",
+                "selectedIconPath": "resource/images/shortVideo-selected.png"
+            },
+            {
+                "pagePath": "pages/ranking/ranking",
+                "text": "风云榜",
+                "iconPath": "resource/images/tab-rank.png",
+                "selectedIconPath": "resource/images/tab-rank-selected.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "resource/images/tab-my.png",
+                "selectedIconPath": "resource/images/tab-my-selected.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "subPackages": [
+        {
+            "root": "subPackage",
+            "pages": [
+                "pages/vipGuide/vipGuide",
+                "pages/userSet/userSet",
+                "pages/playLog/playLog",
+                "pages/subscribeLog/subscribeLog",
+                "pages/feedback/feedback",
+                "pages/setPhone/qiyiLogin",
+                "pages/setPhone/set",
+                "pages/loginSuc/loginSuc",
+                "pages/searchResult/searchResult",
+                "pages/setPhone/messageCodeInput",
+                "pages/webview/webview",
+                "pages/integral/detail/detail",
+                "pages/yingba/yingba",
+                "pages/clientGuide/clientGuide",
+                "pages/hd/rxjwt/vote",
+                "pages/lottery/lottery",
+                "pages/actLuckDraw/actLuckDraw",
+                "pages/actMyprize/actMyprize",
+                "pages/fragment/fragment",
+                "pages/studioTheatre/studioTheatre",
+                "pages/theatre/room",
+                "pages/miniVideo/miniVideo",
+                "pages/hd/yxgl/yxgl",
+                "pages/playDetail/playDetail",
+                "pages/userVideo/userVideo"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        "wxba59214d98c13a15"
+    ]
+}

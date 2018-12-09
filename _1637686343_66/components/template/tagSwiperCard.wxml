@@ -1,0 +1,41 @@
+<template name="tagFullCard">
+    <view class="m-full-card-item" hidden="{{liveCardFolded===true&&index>1}}">
+        <form bindsubmit="{{bindtapFn}}" class="m-cardItem-wrap" data-aid="{{albumId}}" data-card-type="{{cardType}}" data-cid="{{channelId}}" data-content-type="{{contentType}}" data-qipu-id="{{qipuId}}" data-video-type="{{videoType}}" reportSubmit="true">
+            <button class="button-in-form" formType="submit">
+                <view class="full-card-inner">
+                    <image class="m-live-img" src="{{imageUrl?imageUrl:'/resource/images/live-default.png'}}"></image>
+                    <template is="icon" data="{{isVip:isVip,isQiyiProduced:isQiyiProduced,isExclusive:isExclusive,isCoupon:isCoupon,isPaid:isPaid,isPaiKe:isPaiKe,playStatus:playStatus}}"></template>
+                    <view class="m-list_c-rb">
+                        <text class="m-full-card-title text-ellips">{{mainTitle}}</text>
+                    </view>
+                </view>
+                <view class="m-full-card-bottom">
+                    <view class="m-full-card-text" wx:if="{{showTime}}">直播时间:{{showTime}}</view>
+                </view>
+            </button>
+        </form>
+        <form catchsubmit="{{catchtapFn}}" class="m-full-card-form" data-is-subscribe="{{isSubscribe}}" data-qipu-id="{{qipuId}}" reportSubmit="true">
+            <button class="m-full-card-btn {{isSubscribe==true?'m-full-order-gray':''}}" disabled="{{disabled}}" formType="submit">
+                <text class="m-full-order-text" wx:if="{{isSubscribe==true}}">已预约</text>
+                <text class="m-full-order-text" wx:else>立即预约</text>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="tagSwiperCard">
+    <view class="m-swiper_live_item">
+        <form bindsubmit="{{bindtapFn}}" class="m-live_item-wrap" data-c-type="{{cType}}" data-card-mcnt="{{cardMcnt}}" data-card-type="{{cardType}}" data-cid="{{channelId}}" data-qipu-id="{{qipuId}}" data-video-type="{{videoType}}" reportSubmit="true">
+            <button class="button-in-form" formType="submit">
+                <view class="m-live_cover">
+                    <image class="m-swiper_live_img" height="100" mode="aspectFill" src="{{imageUrl?imageUrl:'/resource/images/list-livevideo-list-bg.png'}}" width="75"></image>
+                    <template is="icon" data="{{isVip:isVip,isQiyiProduced:isQiyiProduced,isExclusive:isExclusive,isCoupon:isCoupon,isPaid:isPaid,isPaiKe:isPaiKe,playStatus:playStatus}}"></template>
+                </view>
+                <view class="m-live-bottom">
+                    <view class="{{cardType==3?'m-live_info_play':'m-live_info'}}">{{mainTitle}}</view>
+                    <view class="m-live_play_time">{{cardType==4?showTime:''}}</view>
+                </view>
+            </button>
+        </form>
+    </view>
+</template>
+<import src="/components/template/icon.wxml"></import>
