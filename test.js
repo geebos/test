@@ -1,3 +1,5 @@
+﻿//这是一行注释
+
 var http = require('http');  
 var qs = require('querystring'); 
 var r = require('./tmts');
